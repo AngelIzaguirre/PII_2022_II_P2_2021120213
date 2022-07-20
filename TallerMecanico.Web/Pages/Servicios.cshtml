@@ -1,0 +1,51 @@
+﻿@page
+@using Packt.Shared
+@model TallerMecanico.Web.Pages.ServiciosModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <h1 class="display-2">Servicios</h1>
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>ServicioId</th>
+            <th>TipoServicio</th>
+            <th>Garantia</th>
+            <th>DescripcionProblema</th>
+            <th>Costo</th>
+            <th>FechaIngreso</th>
+            <th>FechaSalida</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @if (Model.Servicios is not null)
+        {
+         @foreach (Servicio servicio in Model.Servicios)
+            {
+                <tr>
+                    <td>@servicio.ServicioId</td>
+                    <td>@servicio.TipoServicio</td>
+                    <td>@servicio.Garantia</td>
+                    <td>@servicio.DescripcionProblema</td>
+                    <td>@servicio.Costo</td>
+                    <td>@servicio.FechaIngreso</td>
+                    <td>@servicio.FechaSalida</td>
+                </tr>
+            }      
+        }
+    </tbody>
+    </table>
+</div>
+<div class="row">
+    <p>Ingrese los detalles para el nuevo servicio:</p>
+    <form method="POST">
+          <div><input asp-for="servicio.ServicioId" placeholder="ServicioId"/></div>
+          <div><input asp-for="servicio.TipoServicio" placeholder="TipoServicio"/> </div>
+          <div><input asp-for="servicio.Garantia" placeholder="Garantia"/> </div>
+          <div><input asp-for="servicio.DescripcionProblema" placeholder="DescripcionProblema"/></div>
+          <div><input asp-for="servicio.Costo" placeholder="Costo"/> </div>
+          <div><input asp-for="servicio.FechaIngreso" placeholder="FechaIngreso"/> </div>
+          <div><input asp-for="servicio.FechaSalida" placeholder="FechaSalida"/> </div>
+          <input type="submit"/>
+    </form>
+</div>

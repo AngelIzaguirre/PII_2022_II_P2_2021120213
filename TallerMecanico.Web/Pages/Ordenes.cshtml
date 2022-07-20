@@ -1,0 +1,55 @@
+﻿@page
+@using Packt.Shared
+@model TallerMecanico.Web.Pages.OrdenesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <h1 class="display-2">Ordenes</h1>
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>OrdenId</th>
+            <th>ClienteId</th>
+            <th>FechaOrden</th>
+            <th>Auto</th>
+            <th>Matricula</th>
+            <th>Marca</th>
+            <th>FechaIngreso</th>            
+            <th>FechaSalida</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @if (Model.Orden is null)
+        {
+         @foreach (Orden orden in Model.Orden)
+            {
+                <tr>
+                    <td>@orden.OrdenId</td>
+                    <td>@orden.ClienteId</td>
+                    <td>@orden.FechaOrden</td>
+                    <td>@orden.Auto</td>
+                    <td>@orden.Matricula</td>
+                    <td>@orden.Marca</td>
+                    <td>@orden.FechaIngreso</td>
+                    <td>@orden.FechaSalida</td>
+                </tr>
+            }      
+        }
+    </tbody>
+    </table>
+</div>
+<div class="row">
+    <p>Ingrese los detalles para la nueva orden:</p>
+    <form method="POST">
+          <div><input asp-for="orden.OrdenId" placeholder="OrdenId "/> </div>  
+          <div><input asp-for="orden.ClienteId" placeholder="ClienteId "/> </div>
+          <div><input asp-for="orden.FechaOrden" placeholder="FechaOrden"/> </div>
+          <div><input asp-for="orden.Auto" placeholder="Auto"/> </div>
+          <div><input asp-for="orden.Matricula" placeholder="Matricula"/> </div>
+          <div><input asp-for="orden.Marca" placeholder="Marca"/> </div>
+          <div><input asp-for="orden.FechaIngreso" placeholder="FechaIngreso"/> </div>
+          <div><input asp-for="orden.FechaSalida" placeholder="FechaSalida"/> </div>
+          <input type="submit"/>
+    </form>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@page
+@using Packt.Shared
+@model TallerMecanico.Web.Pages.ClientesModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <h1 class="display-2">Clientes</h1>
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>ClienteId</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Auto</th>
+            <th>Matricula</th>
+            <th>FechaNacimiento</th>            
+            <th>Telefono</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @if (Model.Cliente is not null)
+        {
+         @foreach (Cliente clientes in Model.Cliente)
+            {
+                <tr>
+                    <td>@clientes.ClienteId</td>
+                    <td>@clientes.Nombre</td>
+                    <td>@clientes.Direccion</td>
+                    <td>@clientes.Auto</td>
+                    <td>@clientes.Matricula</td>
+                    <td>@clientes.FechaNacimiento</td>
+                    <td>@clientes.Telefono</td>
+                </tr>
+            }      
+        }
+    </tbody>
+    </table>
+</div>
+<div class="row">
+    <p>Ingrese los detalles para el nuevo cliente:</p>
+    <form method="POST">
+          <div><input asp-for="cliente.ClienteId" placeholder="ClienteId "/> </div>
+          <div><input asp-for="cliente.Nombre" placeholder="Nombre"/> </div>
+          <div><input asp-for="cliente.Direccion" placeholder="Direccion"/> </div>
+          <div><input asp-for="cliente.Auto" placeholder="Auto"/> </div>
+          <div><input asp-for="cliente.Matricula" placeholder="Matricula"/> </div>
+          <div><input asp-for="cliente.FechaNacimiento" placeholder="FechaNacimiento"/> </div>
+          <div><input asp-for="cliente.Telefono" placeholder="Telefono"/> </div>
+          <input type="submit"/>
+    </form>
+</div>
+

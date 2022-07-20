@@ -1,0 +1,36 @@
+﻿@page
+@functions
+{
+    public string? NombreDia{ get; set; }
+    public void OnGet()
+    {
+        ViewData["Title"] = "QIZA";
+        Model.NombreDia = DateTime.Now.ToString("dddd");
+
+    }
+}
+<link rel="stylesheet" href="index.html">
+    <div class="jumbotron">
+        <h1 class= "display"> Taller Mecanico </h1>
+        <p class="lead"> Nosotros somos desarrolladores para nuestros clientes</p>
+        <hr />
+        <h2>Seleccione una de las siguientes opciones</h2>
+        <p>Hoy es @Model.NombreDia! Clientes, Servicios, Orden y Orden Detalle</p>
+        <p>
+            <a class="btn btn-dark"   
+                 href="Clientes">Clientes</a>
+        </p>
+        <p>
+            <a class="btn btn-dark"   
+                 href="Servicios">Servicios</a>
+        </p>
+        <p>
+            <a class="btn btn-dark"   
+                 href="Ordenes">Ordenes</a>
+        </p>
+        <p>
+            <a class="btn btn-dark"   
+                 href="OrdenesDetalle">Detalles de Orden</a>
+        </p>
+    </div>
+    

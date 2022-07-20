@@ -1,0 +1,55 @@
+﻿@page
+@using Packt.Shared
+@model TallerMecanico.Web.Pages.OrdenesDetalleModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="row">
+    <h1 class="display-2">OrdenesDetalles</h1>
+    <table class="table">
+    <thead class="thead-inverse">
+        <tr>
+            <th>ClienteId</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Auto</th>
+            <th>Matricula</th>
+            <th>FechaNacimiento</th>            
+            <th>Telefono</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @if (Model.OrdenDetalle is null)
+        {
+         @foreach (OrdenDetalle ordenDetalle in Model.OrdenDetalle)
+            {
+                <tr>
+                    <td>@ordenDetalle.OrdenDetalleId</td>
+                    <td>@ordenDetalle.OrdenId</td>
+                    <td>@ordenDetalle.FechaOrden</td>
+                    <td>@ordenDetalle.TipoServicio</td>
+                    <td>@ordenDetalle.Auto</td>
+                    <td>@ordenDetalle.Matricula</td>
+                    <td>@ordenDetalle.Marca</td>
+                    <td>@ordenDetalle.Costo</td>
+                  
+                </tr>
+            }      
+        }
+    </tbody>
+    </table>
+</div>
+<div class="row">
+    <p>Ingrese los detalles para el nuevo ordenDetalle:</p>
+    <form method="POST">
+          <div><input asp-for="ordenDetalle.OrdenDetalleId" placeholder="OrdenDetalleId "/> </div>
+          <div><input asp-for="ordenDetalle.OrdenId" placeholder="OrdenId"/> </div>
+          <div><input asp-for="ordenDetalle.FechaOrden" placeholder="FechaOrden"/> </div>
+          <div><input asp-for="ordenDetalle.TipoServicio" placeholder="TipoServicio"/> </div>
+          <div><input asp-for="ordenDetalle.Auto" placeholder="Auto"/> </div>
+          <div><input asp-for="ordenDetalle.Matricula" placeholder="Matricula"/> </div>
+          <div><input asp-for="ordenDetalle.Marca" placeholder="Marca"/> </div>
+          <div><input asp-for="ordenDetalle.Costo" placeholder="Costo"/> </div>
+          <input type="submit"/>
+    </form>
+</div>
+
